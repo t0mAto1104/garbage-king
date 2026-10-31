@@ -1,0 +1,133 @@
+{
+  "protocol_version": "1.0",
+  "id": "20261031T075800Z-gdd-longterm-v01",
+  "created_at": "2026-10-31T07:58:00+00:00",
+  "author": {
+    "human": "HFN-dashuaige (authenticated GitHub account; acting for project team)",
+    "tool": "ChatGPT GitHub connector",
+    "model": "GPT-6"
+  },
+  "status": "done",
+  "branch": "docs/gdd-v0-1-20261031",
+  "base_commit": "2d97c962210103a82c6411e2d3077114d90ed430",
+  "previous_handoffs": [
+    "docs/handoffs/20261031T074202Z-bootstrap-collaboration.json"
+  ],
+  "request": "将本次讨论的万物拆解/垃圾王完整游戏设计整理并上传到指定的私有 GitHub 仓库，保留现有原型和多人协作协议。",
+  "summary": "新增长期版 GDD、数值经济、美术音乐、Godot 架构、路线图、开发任务与设计决策文档；README、项目状态与 CHANGELOG 增加规划索引，游戏运行时代码和 JSON 参数不变。",
+  "changes": [
+    {
+      "path": "docs/GDD_FULL_V0_1.md",
+      "kind": "added",
+      "summary": "将完整产品设计与当前 Can Stomper v1.1 原型边界明确区分，提供可追溯设计及协作计划。"
+    },
+    {
+      "path": "docs/BALANCE_FULL_V0_1.md",
+      "kind": "added",
+      "summary": "将完整产品设计与当前 Can Stomper v1.1 原型边界明确区分，提供可追溯设计及协作计划。"
+    },
+    {
+      "path": "docs/ART_AUDIO_FULL_V0_1.md",
+      "kind": "added",
+      "summary": "将完整产品设计与当前 Can Stomper v1.1 原型边界明确区分，提供可追溯设计及协作计划。"
+    },
+    {
+      "path": "docs/TECH_PLAN_FULL_V0_1.md",
+      "kind": "added",
+      "summary": "将完整产品设计与当前 Can Stomper v1.1 原型边界明确区分，提供可追溯设计及协作计划。"
+    },
+    {
+      "path": "docs/ROADMAP_FULL_V0_1.md",
+      "kind": "added",
+      "summary": "将完整产品设计与当前 Can Stomper v1.1 原型边界明确区分，提供可追溯设计及协作计划。"
+    },
+    {
+      "path": "docs/TASKS_FULL_V0_1.md",
+      "kind": "added",
+      "summary": "将完整产品设计与当前 Can Stomper v1.1 原型边界明确区分，提供可追溯设计及协作计划。"
+    },
+    {
+      "path": "docs/DECISIONS_FULL_V0_1.md",
+      "kind": "added",
+      "summary": "将完整产品设计与当前 Can Stomper v1.1 原型边界明确区分，提供可追溯设计及协作计划。"
+    },
+    {
+      "path": "README.md",
+      "kind": "modified",
+      "summary": "将完整产品设计与当前 Can Stomper v1.1 原型边界明确区分，提供可追溯设计及协作计划。"
+    },
+    {
+      "path": "docs/PROJECT_STATE.md",
+      "kind": "modified",
+      "summary": "将完整产品设计与当前 Can Stomper v1.1 原型边界明确区分，提供可追溯设计及协作计划。"
+    },
+    {
+      "path": "CHANGELOG.md",
+      "kind": "modified",
+      "summary": "将完整产品设计与当前 Can Stomper v1.1 原型边界明确区分，提供可追溯设计及协作计划。"
+    },
+    {
+      "path": "docs/handoffs/20261031T075800Z-gdd-longterm-v01.json",
+      "kind": "added",
+      "summary": "本次 GitHub 文档更新的结构化交接，含真实测试范围、风险、下一步。"
+    }
+  ],
+  "decisions": [
+    "先保留现有鞋尖悬停、持续供罐、自动线、左侧商店、1280×720 和 v2 存档，不因新故事设定直接重写。",
+    "长期叙事先建议工具光标 + 角色改装界面路径 A，完整可见主角路径 B 等试听玩与工时评估。",
+    "所有长期版 HP、升级价、概率与离线收益均为测试草案，不触碰 data/demo_balance.json。"
+  ],
+  "contracts": [
+    {
+      "area": "runtime data and save",
+      "summary": "本次仅文档变更。运行时配置、信号、经济、存档 schema v2 与原型接口保持原样。",
+      "breaking_change": false
+    }
+  ],
+  "tests": [
+    {
+      "command": "python tools/handoff.py validate --base <main-sha>",
+      "working_directory": ".",
+      "result": "not_run",
+      "summary": "此会话仅通过 GitHub 连接写入仓库，无终端执行环境；等待 PR CI 校验。"
+    },
+    {
+      "command": "python tools/dev.py test",
+      "working_directory": ".",
+      "result": "not_run",
+      "summary": "本次无游戏代码变更；此会话未运行 Godot/Windows 实机测试。"
+    },
+    {
+      "command": "git diff --check",
+      "working_directory": ".",
+      "result": "not_run",
+      "summary": "通过 GitHub API 创建树和提交，未使用本地工作区执行 git diff --check。"
+    }
+  ],
+  "risks": [
+    "长期方案与现有 10 分钟原型在人物呈现、UI 方位、供货节奏及数值上有冲突，文档标记了优先级但最终产品形式待团队确认。",
+    "未进行真人试玩，所有 20–30 分钟/3–5 小时与 8 周计划都是目标，不代表已验证。",
+    "文档写入后的 CI 校验需查看 PR Checks；本次未运行引擎、经济或真机测试。"
+  ],
+  "next_steps": [
+    {
+      "priority": "P1",
+      "task": "审阅长期版与当前原型的五项设计差异，选定鼠标工具成长或完整角色演出。",
+      "acceptance": "两名开发者确认路径，记录到 DECISIONS 文档和 Issue。"
+    },
+    {
+      "priority": "P1",
+      "task": "做鞋→锤→钻的独立原型并实际试玩。",
+      "acceptance": "原型不破坏现有鞋尖/持续罐/存档回归；三位外部试玩者反馈有记录。"
+    },
+    {
+      "priority": "P2",
+      "task": "验证 20–30 分钟经济与故事节奏后扩展素材。",
+      "acceptance": "经济模拟加实机试玩共同支持升级时间和留存节点。"
+    }
+  ],
+  "recovery": {
+    "strategy": "git_revert",
+    "notes": "本次只修改 Markdown 与新增交接 JSON；如不接受规划，可关闭 PR 不合并，或将该独立文档提交 revert。未修改玩家存档或原型数据。"
+  }
+}
