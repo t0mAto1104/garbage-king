@@ -1,0 +1,8 @@
+---
+description: Shared garbage-king project and AI handoff instructions
+alwaysApply: true
+---
+
+Read root `AGENTS.md`, `docs/PROJECT_STATE.md`, and `docs/AI_PROTOCOL.md`.
+Inspect Git state and relevant `docs/handoffs/*.json` before changing files.
+Use the shared protocol for every handoff; this entry file does not duplicate it.

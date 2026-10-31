@@ -1,0 +1,985 @@
+{
+  "protocol_version": "1.0",
+  "id": "20261031T074202Z-bootstrap-collaboration",
+  "created_at": "2026-10-31T07:42:02+00:00",
+  "author": {
+    "human": "t0mAto1104",
+    "tool": "Codex",
+    "model": "unknown"
+  },
+  "status": "done",
+  "branch": "main",
+  "base_commit": null,
+  "previous_handoffs": [],
+  "request": "为垃圾王创建 garbage-king 私有 GitHub 仓库，邀请 HFN-dashuaige，并建立不限定人数、适配不同 AI 工具的持续开发与交接协议。",
+  "summary": "导入现有 Can Stomper v1.1 源码基线；建立多人协作入口、状态文件、通信协议1.0、JSON交接、自动验证和PR流程；提供跨平台开发入口，保持运行时玩法与存档格式。",
+  "changes": [
+    {
+      "path": ".cursor/rules/project.mdc",
+      "kind": "added",
+      "summary": "设置共享 AI 入口、多人约束、PR 模板与协议/平衡 CI。"
+    },
+    {
+      "path": ".gitattributes",
+      "kind": "added",
+      "summary": "排除缓存、个人设置、存档、日志和发布二进制，统一跨平台文本与资源属性。"
+    },
+    {
+      "path": ".github/copilot-instructions.md",
+      "kind": "added",
+      "summary": "设置共享 AI 入口、多人约束、PR 模板与协议/平衡 CI。"
+    },
+    {
+      "path": ".github/pull_request_template.md",
+      "kind": "added",
+      "summary": "设置共享 AI 入口、多人约束、PR 模板与协议/平衡 CI。"
+    },
+    {
+      "path": ".github/workflows/collaboration.yml",
+      "kind": "added",
+      "summary": "设置共享 AI 入口、多人约束、PR 模板与协议/平衡 CI。"
+    },
+    {
+      "path": ".gitignore",
+      "kind": "added",
+      "summary": "排除缓存、个人设置、存档、日志和发布二进制，统一跨平台文本与资源属性。"
+    },
+    {
+      "path": "AGENTS.md",
+      "kind": "added",
+      "summary": "设置共享 AI 入口、多人约束、PR 模板与协议/平衡 CI。"
+    },
+    {
+      "path": "BUGS.md",
+      "kind": "added",
+      "summary": "导入或补充当前项目说明与多人接力文档；早期开发包标记为历史参考。"
+    },
+    {
+      "path": "CHANGELOG.md",
+      "kind": "added",
+      "summary": "导入或补充当前项目说明与多人接力文档；早期开发包标记为历史参考。"
+    },
+    {
+      "path": "CLAUDE.md",
+      "kind": "added",
+      "summary": "设置共享 AI 入口、多人约束、PR 模板与协议/平衡 CI。"
+    },
+    {
+      "path": "CODEX_MASTER_PROMPT.md",
+      "kind": "added",
+      "summary": "导入或补充当前项目说明与多人接力文档；早期开发包标记为历史参考。"
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "kind": "added",
+      "summary": "导入或补充当前项目说明与多人接力文档；早期开发包标记为历史参考。"
+    },
+    {
+      "path": "GODOT_LICENSE.txt",
+      "kind": "added",
+      "summary": "导入或补充当前项目说明与多人接力文档；早期开发包标记为历史参考。"
+    },
+    {
+      "path": "README.md",
+      "kind": "added",
+      "summary": "导入或补充当前项目说明与多人接力文档；早期开发包标记为历史参考。"
+    },
+    {
+      "path": "README_RUN.md",
+      "kind": "added",
+      "summary": "导入或补充当前项目说明与多人接力文档；早期开发包标记为历史参考。"
+    },
+    {
+      "path": "README_START_HERE.md",
+      "kind": "added",
+      "summary": "导入或补充当前项目说明与多人接力文档；早期开发包标记为历史参考。"
+    },
+    {
+      "path": "TEST_REPORT.md",
+      "kind": "added",
+      "summary": "导入或补充当前项目说明与多人接力文档；早期开发包标记为历史参考。"
+    },
+    {
+      "path": "THIRD_PARTY_NOTICES.md",
+      "kind": "added",
+      "summary": "导入或补充当前项目说明与多人接力文档；早期开发包标记为历史参考。"
+    },
+    {
+      "path": "assets/art/can_blue_0.png",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/art/can_blue_0.png.import",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/art/can_blue_1.png",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/art/can_blue_1.png.import",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/art/can_blue_2.png",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/art/can_blue_2.png.import",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/art/can_blue_3.png",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/art/can_blue_3.png.import",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/art/can_blue_4.png",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/art/can_blue_4.png.import",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/art/can_gold_0.png",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/art/can_gold_0.png.import",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/art/can_gold_1.png",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/art/can_gold_1.png.import",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/art/can_gold_2.png",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/art/can_gold_2.png.import",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/art/can_gold_3.png",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/art/can_gold_3.png.import",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/art/can_gold_4.png",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/art/can_gold_4.png.import",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/art/can_red_0.png",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/art/can_red_0.png.import",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/art/can_red_1.png",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/art/can_red_1.png.import",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/art/can_red_2.png",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/art/can_red_2.png.import",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/art/can_red_3.png",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/art/can_red_3.png.import",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/art/can_red_4.png",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/art/can_red_4.png.import",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/art/coin.png",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/art/coin.png.import",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/art/garage.png",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/art/garage.png.import",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/art/icon.png",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/art/icon.png.import",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/art/shoe.png",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/art/shoe.png.import",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/audio/buy.wav",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/audio/buy.wav.import",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/audio/coin.wav",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/audio/coin.wav.import",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/audio/crush.wav",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/audio/crush.wav.import",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/audio/hit.wav",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/audio/hit.wav.import",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/placeholders/PREVIEW_contact_sheet.png",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/placeholders/PREVIEW_contact_sheet.png.import",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/placeholders/auto_stomper.png",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/placeholders/auto_stomper.png.import",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/placeholders/can_blue_0.png",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/placeholders/can_blue_0.png.import",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/placeholders/can_blue_1.png",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/placeholders/can_blue_1.png.import",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/placeholders/can_blue_2.png",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/placeholders/can_blue_2.png.import",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/placeholders/can_blue_3.png",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/placeholders/can_blue_3.png.import",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/placeholders/can_blue_4.png",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/placeholders/can_blue_4.png.import",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/placeholders/can_gold_0.png",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/placeholders/can_gold_0.png.import",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/placeholders/can_gold_1.png",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/placeholders/can_gold_1.png.import",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/placeholders/can_gold_2.png",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/placeholders/can_gold_2.png.import",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/placeholders/can_gold_3.png",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/placeholders/can_gold_3.png.import",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/placeholders/can_gold_4.png",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/placeholders/can_gold_4.png.import",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/placeholders/can_red_0.png",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/placeholders/can_red_0.png.import",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/placeholders/can_red_1.png",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/placeholders/can_red_1.png.import",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/placeholders/can_red_2.png",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/placeholders/can_red_2.png.import",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/placeholders/can_red_3.png",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/placeholders/can_red_3.png.import",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/placeholders/can_red_4.png",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/placeholders/can_red_4.png.import",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/placeholders/coin.png",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/placeholders/coin.png.import",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/placeholders/concrete_tile.png",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/placeholders/concrete_tile.png.import",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/placeholders/shoe_cursor_idle.png",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/placeholders/shoe_cursor_idle.png.import",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/placeholders/shoe_cursor_stomp.png",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/placeholders/shoe_cursor_stomp.png.import",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/references/garage_gameplay_reference.png",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/references/garage_gameplay_reference.png.import",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/references/style_asset_reference.png",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "assets/references/style_asset_reference.png.import",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "data/demo_balance.json",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "docs/ACCEPTANCE_TESTS.md",
+      "kind": "added",
+      "summary": "导入或补充当前项目说明与多人接力文档；早期开发包标记为历史参考。"
+    },
+    {
+      "path": "docs/AI_PROTOCOL.md",
+      "kind": "added",
+      "summary": "导入或补充当前项目说明与多人接力文档；早期开发包标记为历史参考。"
+    },
+    {
+      "path": "docs/ART_GUIDE.md",
+      "kind": "added",
+      "summary": "导入或补充当前项目说明与多人接力文档；早期开发包标记为历史参考。"
+    },
+    {
+      "path": "docs/BALANCE_NOTES.md",
+      "kind": "added",
+      "summary": "导入或补充当前项目说明与多人接力文档；早期开发包标记为历史参考。"
+    },
+    {
+      "path": "docs/ENGINE_NOTES.md",
+      "kind": "added",
+      "summary": "导入或补充当前项目说明与多人接力文档；早期开发包标记为历史参考。"
+    },
+    {
+      "path": "docs/GDD_10MIN.md",
+      "kind": "added",
+      "summary": "导入或补充当前项目说明与多人接力文档；早期开发包标记为历史参考。"
+    },
+    {
+      "path": "docs/PHASES.md",
+      "kind": "added",
+      "summary": "导入或补充当前项目说明与多人接力文档；早期开发包标记为历史参考。"
+    },
+    {
+      "path": "docs/PROJECT_STATE.md",
+      "kind": "added",
+      "summary": "导入或补充当前项目说明与多人接力文档；早期开发包标记为历史参考。"
+    },
+    {
+      "path": "docs/protocol/handoff.schema.json",
+      "kind": "added",
+      "summary": "定义并执行跨 AI 的结构化交接生成与校验。"
+    },
+    {
+      "path": "export_presets.cfg",
+      "kind": "added",
+      "summary": "导入或补充当前项目说明与多人接力文档；早期开发包标记为历史参考。"
+    },
+    {
+      "path": "licenses/GODOT_COPYRIGHT.txt",
+      "kind": "added",
+      "summary": "移除固定用户名/相邻项目依赖，提供可配置打包参数与本仓库许可文件；本次未打包。"
+    },
+    {
+      "path": "project.godot",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "scenes/main.tscn",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "scripts/can_field.gd",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "scripts/can_field.gd.uid",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "scripts/data_loader.gd",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "scripts/data_loader.gd.uid",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "scripts/economy.gd",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "scripts/economy.gd.uid",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "scripts/game_state.gd",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "scripts/game_state.gd.uid",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "scripts/garage.gd",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "scripts/garage.gd.uid",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "scripts/main.gd",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "scripts/main.gd.uid",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "scripts/progress_strip.gd",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "scripts/progress_strip.gd.uid",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "scripts/save_service.gd",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "scripts/save_service.gd.uid",
+      "kind": "added",
+      "summary": "导入既有 v1.1 游戏基线；保留持续供罐、完整罐堆存档和现有像素素材引用。"
+    },
+    {
+      "path": "tests/capture.gd",
+      "kind": "added",
+      "summary": "导入现有测试、验收截图、原始素材生成器与平衡模拟。"
+    },
+    {
+      "path": "tests/capture.gd.uid",
+      "kind": "added",
+      "summary": "导入现有测试、验收截图、原始素材生成器与平衡模拟。"
+    },
+    {
+      "path": "tests/screenshots/01-new-garage.png",
+      "kind": "added",
+      "summary": "导入现有测试、验收截图、原始素材生成器与平衡模拟。"
+    },
+    {
+      "path": "tests/screenshots/01-new-garage.png.import",
+      "kind": "added",
+      "summary": "导入现有测试、验收截图、原始素材生成器与平衡模拟。"
+    },
+    {
+      "path": "tests/screenshots/02-stomp.png",
+      "kind": "added",
+      "summary": "导入现有测试、验收截图、原始素材生成器与平衡模拟。"
+    },
+    {
+      "path": "tests/screenshots/02-stomp.png.import",
+      "kind": "added",
+      "summary": "导入现有测试、验收截图、原始素材生成器与平衡模拟。"
+    },
+    {
+      "path": "tests/screenshots/03-automation.png",
+      "kind": "added",
+      "summary": "导入现有测试、验收截图、原始素材生成器与平衡模拟。"
+    },
+    {
+      "path": "tests/screenshots/03-automation.png.import",
+      "kind": "added",
+      "summary": "导入现有测试、验收截图、原始素材生成器与平衡模拟。"
+    },
+    {
+      "path": "tests/screenshots/04-summary.png",
+      "kind": "added",
+      "summary": "导入现有测试、验收截图、原始素材生成器与平衡模拟。"
+    },
+    {
+      "path": "tests/screenshots/04-summary.png.import",
+      "kind": "added",
+      "summary": "导入现有测试、验收截图、原始素材生成器与平衡模拟。"
+    },
+    {
+      "path": "tests/screenshots/05-help.png",
+      "kind": "added",
+      "summary": "导入现有测试、验收截图、原始素材生成器与平衡模拟。"
+    },
+    {
+      "path": "tests/screenshots/05-help.png.import",
+      "kind": "added",
+      "summary": "导入现有测试、验收截图、原始素材生成器与平衡模拟。"
+    },
+    {
+      "path": "tests/test_core.gd",
+      "kind": "added",
+      "summary": "导入现有测试、验收截图、原始素材生成器与平衡模拟。"
+    },
+    {
+      "path": "tests/test_core.gd.uid",
+      "kind": "added",
+      "summary": "导入现有测试、验收截图、原始素材生成器与平衡模拟。"
+    },
+    {
+      "path": "tests/test_feed.gd",
+      "kind": "added",
+      "summary": "导入现有测试、验收截图、原始素材生成器与平衡模拟。"
+    },
+    {
+      "path": "tests/test_feed.gd.uid",
+      "kind": "added",
+      "summary": "导入现有测试、验收截图、原始素材生成器与平衡模拟。"
+    },
+    {
+      "path": "tests/test_handoff_protocol.py",
+      "kind": "added",
+      "summary": "验证交接字段、路径、历史不可重写、变更覆盖、任务起点与生成器。"
+    },
+    {
+      "path": "tests/test_progression.gd",
+      "kind": "added",
+      "summary": "导入现有测试、验收截图、原始素材生成器与平衡模拟。"
+    },
+    {
+      "path": "tests/test_progression.gd.uid",
+      "kind": "added",
+      "summary": "导入现有测试、验收截图、原始素材生成器与平衡模拟。"
+    },
+    {
+      "path": "tests/test_scene.gd",
+      "kind": "added",
+      "summary": "导入现有测试、验收截图、原始素材生成器与平衡模拟。"
+    },
+    {
+      "path": "tests/test_scene.gd.uid",
+      "kind": "added",
+      "summary": "导入现有测试、验收截图、原始素材生成器与平衡模拟。"
+    },
+    {
+      "path": "tools/build_art.py",
+      "kind": "added",
+      "summary": "导入现有测试、验收截图、原始素材生成器与平衡模拟。"
+    },
+    {
+      "path": "tools/create_placeholder_art.py",
+      "kind": "added",
+      "summary": "导入现有测试、验收截图、原始素材生成器与平衡模拟。"
+    },
+    {
+      "path": "tools/dev.py",
+      "kind": "added",
+      "summary": "为不同机器提供可配置 Godot 路径的统一运行和测试入口。"
+    },
+    {
+      "path": "tools/handoff.py",
+      "kind": "added",
+      "summary": "定义并执行跨 AI 的结构化交接生成与校验。"
+    },
+    {
+      "path": "tools/package_macos.py",
+      "kind": "added",
+      "summary": "移除固定用户名/相邻项目依赖，提供可配置打包参数与本仓库许可文件；本次未打包。"
+    },
+    {
+      "path": "tools/package_windows.py",
+      "kind": "added",
+      "summary": "移除固定用户名/相邻项目依赖，提供可配置打包参数与本仓库许可文件；本次未打包。"
+    },
+    {
+      "path": "tools/simulate_balance.py",
+      "kind": "added",
+      "summary": "导入现有测试、验收截图、原始素材生成器与平衡模拟。"
+    },
+    {
+      "path": "tools/simulation_duty_0_32.txt",
+      "kind": "added",
+      "summary": "导入现有测试、验收截图、原始素材生成器与平衡模拟。"
+    },
+    {
+      "path": "tools/simulation_duty_0_4.txt",
+      "kind": "added",
+      "summary": "导入现有测试、验收截图、原始素材生成器与平衡模拟。"
+    },
+    {
+      "path": "tools/simulation_duty_0_55.txt",
+      "kind": "added",
+      "summary": "导入现有测试、验收截图、原始素材生成器与平衡模拟。"
+    },
+    {
+      "path": "tools/simulation_duty_0_75.txt",
+      "kind": "added",
+      "summary": "导入现有测试、验收截图、原始素材生成器与平衡模拟。"
+    },
+    {
+      "path": "tools/test_balance.py",
+      "kind": "added",
+      "summary": "导入现有测试、验收截图、原始素材生成器与平衡模拟。"
+    },
+    {
+      "path": "启动开发.bat",
+      "kind": "added",
+      "summary": "为不同机器提供可配置 Godot 路径的统一运行和测试入口。"
+    },
+    {
+      "path": "启动游戏.command",
+      "kind": "added",
+      "summary": "为不同机器提供可配置 Godot 路径的统一运行和测试入口。"
+    }
+  ],
+  "decisions": [
+    "远端名采用人类明确选择的 garbage-king，中文项目名为垃圾王。仓库保持私有。",
+    "协议面向任意人数；每个任务独立负责人、分支和工作目录，交接记录按任务追加，不共用 latest.json。",
+    "共享入口为 AGENTS.md、PROJECT_STATE 和 AI_PROTOCOL；为常见工具添加只指向共同规则的入口，未知工具用 README 开工提示。",
+    "Git 本身关联携带交接的提交；记录任务 base_commit，不把本次提交自己的 SHA 写入本文件。",
+    "CI 只运行协议和 Python 平衡检查；真实 Godot 与平台实机验证必须另行执行，不能混淆。",
+    "引擎内的旧应用名保留，避免用户存档目录改变。未为当前私有源码增加公开开源授权。",
+    "使用 GitHub 官方 checkout v7.0.1 的固定 commit，避免 CI 依赖浮动大版本。"
+  ],
+  "contracts": [
+    {
+      "area": "AI handoff",
+      "summary": "新增协议1.0与严格JSON schema；非初始化上传须带有新的交接JSON、更新后的PROJECT_STATE和变更路径覆盖。",
+      "breaking_change": false
+    },
+    {
+      "area": "developer tooling",
+      "summary": "新增 tools/dev.py、GODOT_BIN/--godot；Windows打包支持 --build/--templates/--output，默认输出变为本仓库 build/releases；许可不再从相邻游戏复制。调用旧默认目录的脚本需要显式指定 --output。",
+      "breaking_change": true
+    },
+    {
+      "area": "game runtime and saves",
+      "summary": "未修改 scripts/、scenes/、data/ 和应用配置；玩法、信号、供罐与schema2存档契约保持。",
+      "breaking_change": false
+    }
+  ],
+  "tests": [
+    {
+      "command": "python3 tools/dev.py test",
+      "working_directory": ".",
+      "result": "passed",
+      "summary": "Godot4.7.2导入；69核心、216供罐、68场景检查和成长模拟通过；此时15项协议测试与5项平衡测试也通过。"
+    },
+    {
+      "command": "python3 -m unittest discover -s tests -p 'test_handoff_protocol.py' -v",
+      "working_directory": ".",
+      "result": "passed",
+      "summary": "补充真实Git起点校验后，最终16项协议测试全部通过。"
+    },
+    {
+      "command": "python3 -m py_compile tools/handoff.py tools/dev.py tools/package_windows.py tools/package_macos.py",
+      "working_directory": ".",
+      "result": "passed",
+      "summary": "Python脚本解析通过；不等于运行macOS打包器。"
+    },
+    {
+      "command": "python3 tools/package_windows.py --help",
+      "working_directory": ".",
+      "result": "passed",
+      "summary": "可配置参数入口正常；本次没有重新导出或压缩发布包。"
+    },
+    {
+      "command": "python3 tools/handoff.py validate",
+      "working_directory": ".",
+      "result": "passed",
+      "summary": "填写后的首份通信包通过schema和引用检查；初次建仓没有父commit，base_commit为null。"
+    },
+    {
+      "command": "Windows x86-64 real-machine playtest",
+      "working_directory": ".",
+      "result": "not_run",
+      "summary": "当前是macOS环境，未进行Windows真机或新的十分钟真人试玩。"
+    }
+  ],
+  "risks": [
+    "HFN-dashuaige 的写入权限邀请已发送；须由其接受后才能使用私有仓库。",
+    "main分支的PR审查是团队约定，尚未启用GitHub服务器端强制分支保护。",
+    "尚未进行Windows实机验证；旧v1.1发布包与当前开发工具改动分开管理。",
+    "大量未踩扁罐堆的绘制、命中和存档成本会随数量增加；没有真实硬件性能采集证据。",
+    "CI不能强迫任意AI理解业务正确性，接手者必须读实际diff并根据任务重跑验证。"
+  ],
+  "next_steps": [
+    {
+      "priority": "P1",
+      "task": "协作者接受邀请并在自己的机器克隆，使用新的AI开工提示接手。",
+      "acceptance": "能读取共享协议与初始交接、用Godot导入并运行项目。"
+    },
+    {
+      "priority": "P1",
+      "task": "在Windows真机检验当前Demo。",
+      "acceptance": "记录系统版本、字体/音效/输入/保存恢复与十分钟体验，提供明确实跑结果。"
+    },
+    {
+      "priority": "P2",
+      "task": "按多人协议选定下一项玩法或美术任务，在独立分支开发。",
+      "acceptance": "PR包含新的交接JSON、状态更新和实际验证，自动检查通过。"
+    }
+  ],
+  "recovery": {
+    "strategy": "manual",
+    "notes": "这是首次Git快照，没有父提交。后续不需要的变更用git revert相应提交恢复；不要删除共享仓库或强推main。当前没有修改游戏存档格式，保留user目录中的已有存档。"
+  }
+}

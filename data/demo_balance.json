@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "meta": {
+    "game_title": "Can Stomper / 踩扁它！",
+    "goal_session_seconds": 600,
+    "note": "用于10分钟垂直切片的首轮平衡参数。需真人试玩后调优；不要将模拟结果视为实际玩家时长。"
+  },
+  "gameplay": {
+    "feed_intervals_seconds": [1.0, 0.8, 0.6, 0.4, 0.25],
+    "initial_coins": 0,
+    "initial_shoe_damage": 1,
+    "base_stomp_cooldown_seconds": 0.68,
+    "stomp_cooldown_reduction_per_level": 0.10,
+    "minimum_stomp_cooldown_seconds": 0.34,
+    "replacement_delay_seconds": 0.85,
+    "coin_value_bonus_per_level": 0.30,
+    "rare_can_probability_after_unlock": 0.055,
+    "blue_can_probability_after_unlock": 0.40,
+    "auto_interval_level1_seconds": 4.0,
+    "auto_interval_level2_seconds": 2.4,
+    "conveyor_auto_interval_multiplier": 0.75,
+    "offline_income_enabled": false,
+    "summary_appears_after_seconds": 600,
+    "max_vfx_objects": 150
+  },
+  "cans": [
+    {"id":"red","name":"普通汽水罐","hp":3,"base_coins":6,"weight_group":"base","available_at_start":true,"sprite_prefix":"can_red","sound":"tin_light"},
+    {"id":"blue","name":"厚壁饮料罐","hp":5,"base_coins":18,"weight_group":"blue","available_at_start":false,"sprite_prefix":"can_blue","sound":"tin_medium"},
+    {"id":"gold","name":"闪亮收藏罐","hp":8,"base_coins":80,"weight_group":"rare","available_at_start":false,"sprite_prefix":"can_gold","sound":"tin_bonus"}
+  ],
+  "upgrades": [
+    {"id":"feed_speed","name":"供罐速度","costs":[60,220,650,1800],"max_level":4,"description":"供罐间隔：1.00→0.80→0.60→0.40→0.25秒/罐","effect_kind":"feed_interval"},
+    {"id":"power","name":"脚力强化","costs":[18,75,240,800],"max_level":4,"description":"每级+1次踩踏伤害","effect_kind":"flat_damage","effect_per_level":1},
+    {"id":"value","name":"回收溢价","costs":[45,160,520],"max_level":3,"description":"每级基础金币收益+30%（加算）","effect_kind":"value_additive","effect_per_level":0.30},
+    {"id":"speed","name":"踩踏节奏","costs":[85,310],"max_level":2,"description":"每级减少0.10秒踩踏间隔","effect_kind":"cooldown_minus_seconds","effect_per_level":0.10},
+    {"id":"auto_speed","name":"自动踩踏加速","costs":[1150],"max_level":1,"description":"独立自动线每4秒一罐变为每2.4秒一罐","effect_kind":"automation_level2"}
+  ],
+  "unlocks": [
+    {"id":"blue_can","name":"厚壁饮料罐","requires_crushed":20,"cost":100,"description":"新罐子加入生成池（40%候选概率）"},
+    {"id":"gold_can","name":"闪亮收藏罐","requires_crushed":55,"cost":450,"description":"开启5.5%的稀有罐候选概率"},
+    {"id":"auto_stomper","name":"自动踩踏机","requires_crushed":70,"cost":1200,"description":"独立的可见自动线，每4秒处理一只普通罐"},
+    {"id":"conveyor","name":"自动线传送带","requires_crushed":115,"cost":2300,"requires_unlock":"auto_stomper","description":"自动踩踏间隔变为原来的75%；与初始供罐传送带独立"}
+  ],
+  "demo_goals": {
+    "blue_can_unlocked": true,
+    "gold_can_unlocked": true,
+    "auto_stomper_unlocked": true,
+    "conveyor_unlocked": true,
+    "show_summary_at_seconds": 600,
+    "allow_continue_playing": true
+  }
+}

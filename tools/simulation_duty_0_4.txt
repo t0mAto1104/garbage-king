@@ -1,0 +1,13 @@
+Demo economy simulation (NOT real playtest):
+ 0.23m  upgrade_power_lv1           wallet=0     crushed=3
+ 0.69m  upgrade_value_lv1           wallet=3     crushed=11
+ 1.44m  unlock_blue_can             wallet=7     crushed=24
+ 1.82m  upgrade_power_lv2           wallet=17    crushed=29
+ 2.02m  upgrade_speed_lv1           wallet=2     crushed=34
+ 2.48m  upgrade_value_lv2           wallet=7     crushed=49
+ 3.40m  unlock_gold_can             wallet=17    crushed=76
+ 4.20m  upgrade_power_lv3           wallet=374   crushed=95
+ 5.50m  unlock_auto_stomper         wallet=27    crushed=132
+ 7.00m  upgrade_auto_speed_lv1      wallet=48    crushed=197
+ 9.40m  unlock_conveyor             wallet=28    crushed=317
+Summary: {"wallet": 690, "total_earned": 6513, "crushed": 352, "unlocks": {"blue_can": true, "gold_can": true, "auto_stomper": true, "conveyor": true}}

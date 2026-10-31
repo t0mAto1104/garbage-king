@@ -1,0 +1,20 @@
+# Third-party notices
+
+The Windows release uses the locally installed official Godot 4.7.2 Standard
+x86-64 release template, distributed under the MIT license. Godot copyright:
+2007-present Juan Linietsky, Ariel Manzur and Godot Engine contributors.
+Full engine license and third-party components: https://godotengine.org/license/
+and https://github.com/godotengine/godot/blob/4.7.2-stable/COPYRIGHT.txt .
+The complete Godot MIT license and third-party copyright notices are included
+in the release's `licenses` folder. The accompanying ICU data comes from the
+same official export-template archive.
+
+Original garage, can sprites, sneaker, coin and synthesized sound effects were
+created specifically for this prototype by `tools/build_art.py` without external
+images or paid services. The bundled kit's original placeholders are retained;
+the small auto-machine shop icon uses its placeholder. User-provided concept
+images are design references only and excluded from game packages.
+
+UI uses system fonts through Godot SystemFont. No commercial font files are
+copied or redistributed. macOS uses PingFang SC; Windows falls back to Microsoft
+YaHei or available sans-serif fonts.

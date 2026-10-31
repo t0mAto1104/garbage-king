@@ -1,0 +1,16 @@
+.godot/
+build/
+__pycache__/
+tests/.test_save.json*
+.DS_Store
+*.pyc
+.venv/
+.env
+.env.*
+!.env.example
+.idea/
+.codex/
+.claude/settings.local.json
+tests/results/*.log
+*.tmp
+save_v*.json*

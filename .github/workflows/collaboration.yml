@@ -1,0 +1,22 @@
+name: Collaboration checks
+
+on: [push, pull_request]
+
+permissions:
+  contents: read
+
+jobs:
+  protocol-and-balance:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+      - name: Protocol validator tests
+        run: python3 -m unittest discover -s tests -p 'test_handoff_protocol.py' -v
+      - name: Handoff schema and changed-file coverage
+        env:
+          HANDOFF_BASE: ${{ github.event.pull_request.base.sha || github.event.before }}
+        run: python3 tools/handoff.py validate --base "$HANDOFF_BASE"
+      - name: Python economy simulation (no Godot runtime claim)
+        run: python3 tools/test_balance.py

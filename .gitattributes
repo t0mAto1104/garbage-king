@@ -1,0 +1,16 @@
+* text=auto
+*.gd text eol=lf
+*.uid text eol=lf
+*.tscn text eol=lf
+*.godot text eol=lf
+*.cfg text eol=lf
+*.md text eol=lf
+*.json text eol=lf
+*.py text eol=lf
+*.yml text eol=lf
+*.command text eol=lf
+*.bat text eol=crlf
+*.png binary
+*.wav binary
+*.zip binary
+*.exe binary
