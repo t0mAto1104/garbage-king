@@ -9,12 +9,24 @@
 5. 不能执行的检查写 `not_run` 及原因，不能把模拟时间、资源包检查或旧日志说成新实机测试。
 6. 人类最新明确需求优先；初始开发包里的旧单罐描述不能覆盖当前持续供罐需求。
 
-## 游戏工程约束
+## 当前实现与历史边界
+
+- 当前默认是“传送工坊”首段切片（`scenes/yard.tscn`），采用长期 GDD 的路径 A；经典踩罐仍可独立进入。
+- 人类于 2026-11-01 授权按新设计开发：轻微像素风、精简界面、2560×1440（16:9）设计视口。窗口默认1600×900，可缩放；新工坊逻辑世界仍为1280×720，UI/输入统一乘除2。
+- 新工具是鞋→义手→锤→钻的鼠标光标演进，不增加人物行走/腿部；剧情与义肢安装通过可关闭面板表达。
+- 新工坊数值来自 `data/yard_balance.json`（schema1），存档为 `user://yard_save_v3.json`（v3）。经典仍使用 `demo_balance.json` / `save_v1.json`（内容v2）。应用配置名不改，窗口标题可改。
+- 首次无v3时才导入经典v1/v2；不改原文件，不反复合并两种模式的钱。完整契约见 `docs/YARD_MIGRATION_V3.md`。
+- 当前仅完成九类废品、四种工具和工坊目标的可玩切片。五章、3–5小时、工业/异界区域、完整人物动画仍为规划；不能把策略模拟当作真人体验时长。
+- 本轮不打包；旧Windows v1.1 ZIP仍只包含经典Demo。
+
+## 通用约束与经典参考约束
+
+以下原型专属条目适用于经典模式；新工坊遵循上节的明确扩展。共享的奖励唯一性、持续堆积、独立自动线与伪物理约束两者都必须保留。
 
 - Stack: Godot **4.7.2 Standard**, **GDScript only**, 2D-only. Do not add Unity, C#, 3D, Blender, server, LLM API, paid assets.
 - Player fantasy: **the mouse pointer IS a shoe** (not a character). Inside the gameplay arena, draw a shoe sprite following the mouse, with toe/hotspot aligned exactly to the hit point. Never draw a leg or person. Over UI keep ordinary pointer so purchases remain accurate.
 - Reference layout: fixed camera, light pixel-art garage/concrete floor, central arena occupies ~76% width, upgrades on left ~24%. No moving 3D camera. Not a scrolling platformer.
-- All runtime balance values from `res://data/demo_balance.json`, loaded once with validation and usable fallback errors. DO NOT hardcode balance prices, can HP, rewards or unlock thresholds into GUI scripts.
+- Classic runtime balance values from `res://data/demo_balance.json`, loaded once with validation and usable fallback errors. DO NOT hardcode balance prices, can HP, rewards or unlock thresholds into GUI scripts.
 - Current user requirements override the original single-can concept: supply one can per second on the initial conveyor; each falls, bounces and rolls to a random resting location. Intact/partly damaged cans accumulate without despawning. The supply-speed upgrade is independent of automated processing.
 - Interaction: while shoe hotspot overlaps any floor can, repeat stomp at the shared cooldown; clicking shares that cooldown. Use its persistent serial and rotated visual hitbox, not a fixed central target. Space targets a hovered can or the oldest available floor can.
 - Core loop state transitions are deterministic and testable. Progress and coin rewards only on transition to `CRUSHED`; protect against duplicate reward from animation callbacks, particles, re-entrant input or load.
@@ -27,4 +39,4 @@
 - Initial MVP no offline income. Save and continue when game closed; pause game time when paused, do not award offline coins.
 - All generated art placeholders should be ORIGINAL. Bundled concept references are guide images, NOT sprite atlases. Do not copy logos and UI verbatim from reference commercial games.
 - Deliver code, scenes, audio placeholders if practical, CLI test scripts, and `README_RUN.md` explaining how to run. Run Godot import/headless parse, and tests if executable available. Never report test success unless command executed.
-- Implement in order P0-P7. Stop at each phase if explicitly requested; report changed files, tests, blockers, manual QA checks.
+- P0-P7 是原型历史阶段；新任务以当前状态与人类需求为准。报告改动、真实验证与仍需人工检查的边界。

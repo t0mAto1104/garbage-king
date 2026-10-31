@@ -46,6 +46,8 @@ var target_panel: Panel
 func _ready() -> void:
 	test_mode = "--test-mode" in OS.get_cmdline_user_args()
 	get_window().min_size = Vector2i(960,540)
+	get_window().title = "Can Stomper · 经典参考"
+	get_window().content_scale_size = Vector2i(1280,720)
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
 	ui_font = SystemFont.new()
 	ui_font.font_names = PackedStringArray(["PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", "Avenir Next", "sans-serif"])
@@ -178,6 +180,10 @@ func build_ui() -> void:
 	label(self,Rect2(335,27,185,26),"回收工坊",19)
 	timer_label = label(self,Rect2(903,25,128,30),"00:00 / 10:00",15,CREAM)
 	button(self,Rect2(1035,22,58,36),"玩法",func(): show_modal("help"))
+	button(self,Rect2(580,22,100,36),"返回新工坊",func():
+		persist()
+		get_window().content_scale_size=Vector2i(2560,1440)
+		get_tree().change_scene_to_file("res://scenes/yard.tscn"))
 	sound_button = button(self,Rect2(1101,22,78,36),"声音 开",toggle_sound)
 	button(self,Rect2(1187,22,73,36),"暂停",func(): show_modal("pause"))
 	auto_label = label(self,Rect2(1040,268,182,36),"独立生产 · 等待启用",13,Color("484c43"))

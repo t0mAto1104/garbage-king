@@ -1,6 +1,6 @@
 # 垃圾王
 
-多人协作开发的 Godot 2D 游戏。当前可玩版本是 Can Stomper v1.1：鞋尖踩罐、持续供罐、随机滚动、升级与自动回收。
+多人协作开发的 Godot 2D 游戏。当前默认是 **2560×1440 传送工坊切片**：从踩罐起步，安装义手、动力锤与电钻，升级传送门并回收大型家电。经典 Can Stomper v1.1 保留独立入口。
 
 ## 开发入口
 
@@ -46,12 +46,12 @@ cd garbage-king
 
 ## 长期产品设计（规划，不等于当前实现）
 
-《垃圾王 / 废品飞升》完整产品概念已整理为 v0.1 文档；**现有可玩版本仍为 Can Stomper v1.1**，玩法、存档及运行方式以本 README 上文和 AGENTS.md / docs/PROJECT_STATE.md 为准。
+《垃圾王 / 废品飞升》完整产品概念已整理为 v0.1 文档；首段工坊已按路径 A 实现，剩余长期内容仍是规划。当前实现、验证和后续工作见 [项目状态](docs/PROJECT_STATE.md) 与 [工坊验收](docs/YARD_TEST_REPORT.md)。
 
 - [完整游戏设计 GDD](docs/GDD_FULL_V0_1.md)：故事、玩法、义肢、传送门、章节与升级
 - [长期版经济草案](docs/BALANCE_FULL_V0_1.md)：垃圾等级、工具价格、伤害与回收公式
 - [美术与音乐](docs/ART_AUDIO_FULL_V0_1.md)：像素画风、动画、资产与音效清单
 - [技术演进方案](docs/TECH_PLAN_FULL_V0_1.md)：Godot 结构、兼容、存档与测试
-- [两人开发路线图](docs/ROADMAP_FULL_V0_1.md)：阶段、分工、范围与退出条件
+- [原始开发路线图](docs/ROADMAP_FULL_V0_1.md)：阶段、分工、范围与退出条件
 - [可执行任务清单](docs/TASKS_FULL_V0_1.md)：按优先级、依赖与验收拆分
 - [设计决策与冲突](docs/DECISIONS_FULL_V0_1.md)：已确认、未定、与旧 Demo 的差异

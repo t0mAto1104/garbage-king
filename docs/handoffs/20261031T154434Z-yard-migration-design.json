@@ -1,0 +1,76 @@
+{
+  "protocol_version": "1.0",
+  "id": "20261031T154434Z-yard-migration-design",
+  "created_at": "2026-10-31T15:44:34+00:00",
+  "author": {
+    "human": "t0mAto1104",
+    "tool": "Codex",
+    "model": "unknown"
+  },
+  "status": "done",
+  "branch": "feat/codex-recycling-yard",
+  "base_commit": "a78ca886e94044cb40552a1652b34f5f2308737b",
+  "previous_handoffs": [
+    "docs/handoffs/20261031T075800Z-gdd-longterm-v01.json"
+  ],
+  "request": "按人类2026-11-01请求执行路径A、融合原型并采用2K；先独立提交数据和存档迁移设计。",
+  "summary": "明确新工坊配置/入口、v3隔离保存、v1/v2导入、可选物件尺寸与2K输入映射，不修改此设计提交中的运行时代码。",
+  "changes": [
+    {
+      "path": "docs/YARD_MIGRATION_V3.md",
+      "kind": "added",
+      "summary": "定义配置、v3保存、向后导入和恢复策略。"
+    },
+    {
+      "path": "docs/DECISIONS_FULL_V0_1.md",
+      "kind": "modified",
+      "summary": "记录人类授权的路径A、2K及首段切片范围。"
+    },
+    {
+      "path": "docs/PROJECT_STATE.md",
+      "kind": "modified",
+      "summary": "登记执行任务与迁移设计，保持早期记录。"
+    }
+  ],
+  "decisions": [
+    "保留经典v2文件及Godot应用名，新工坊写独立yard_save_v3.json。",
+    "2K为2560×1440、16:9；逻辑世界复用1280×720以兼容原型坐标。",
+    "此提交是可独立审阅的迁移设计，下一提交包含实现和兼容性测试。"
+  ],
+  "contracts": [
+    {
+      "area": "configuration and save proposal",
+      "summary": "规划yard_balance.json配置schema1、yard_save_v3.json存档v3；旧路径和旧数据保持。",
+      "breaking_change": false
+    }
+  ],
+  "tests": [
+    {
+      "command": "python3 tools/handoff.py validate --base 0000000000000000000000000000000000000000",
+      "working_directory": ".",
+      "result": "passed",
+      "summary": "本设计记录与已有交接通过schema校验；设计提交的路径覆盖另以暂存差异核对。"
+    },
+    {
+      "command": "python3 tools/dev.py test (a78ca88 baseline)",
+      "working_directory": ".",
+      "result": "passed",
+      "summary": "实施前基线：353项Godot检查、旧成长模拟、16项协议及5项Python平衡通过。"
+    }
+  ],
+  "risks": [
+    "本文不是运行时完成证据；实现、迁移、UI与输入需随后验证。",
+    "当前无法证明Windows真机表现或20–30分钟真人体验。"
+  ],
+  "next_steps": [
+    {
+      "priority": "P1",
+      "task": "实现隔离工坊与工具/传送门成长，保留经典Demo。",
+      "acceptance": "旧回归、新状态/场景/输入及存档文件迁移测试通过，提供真实2K渲染图。"
+    }
+  ],
+  "recovery": {
+    "strategy": "git_revert",
+    "notes": "本次仅3个文档和新交接，可独立revert；未触碰用户存档。"
+  }
+}
