@@ -50,7 +50,7 @@ def main() -> int:
         if args.command == 'run':
             return subprocess.call([godot, '--path', str(ROOT)], cwd=ROOT)
         checked([godot, '--headless', '--path', str(ROOT), '--editor', '--quit'])
-        for name in ['test_core.gd', 'test_feed.gd', 'test_scene.gd', 'test_progression.gd']:
+        for name in ['test_core.gd', 'test_feed.gd', 'test_scene.gd', 'test_progression.gd', 'test_yard.gd', 'test_yard_scene.gd', 'test_yard_input.gd', 'test_yard_progression.gd']:
             checked([godot, '--headless', '--path', str(ROOT), '--script', 'tests/'+name, '--', '--test-mode'])
         checked([sys.executable, '-m', 'unittest', 'discover', '-s', 'tests', '-p', 'test_handoff_protocol.py', '-v'])
         checked([sys.executable, 'tools/test_balance.py'])

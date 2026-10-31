@@ -1,0 +1,810 @@
+{
+  "protocol_version": "1.0",
+  "id": "20261031T155020Z-yard-playable-slice",
+  "created_at": "2026-10-31T15:50:20+00:00",
+  "author": {
+    "human": "t0mAto1104",
+    "tool": "Codex",
+    "model": "unknown"
+  },
+  "status": "done",
+  "branch": "feat/codex-recycling-yard",
+  "base_commit": "a78ca886e94044cb40552a1652b34f5f2308737b",
+  "previous_handoffs": [
+    "docs/handoffs/20261031T075800Z-gdd-longterm-v01.json",
+    "docs/handoffs/20261031T154434Z-yard-migration-design.json"
+  ],
+  "request": "读取朋友的新GDD更新，融合踩罐原型，创造可玩工坊切片；精简UI、轻微像素风、2K。",
+  "summary": "实现路径A首段传送工坊：四工具、九类废品、门与模块成长、主动技能/事件、剧情与目标；经典模式和原存档保留。完整长期GDD仍待后续章节，不生成新发布包。",
+  "changes": [
+    {
+      "path": ".gitignore",
+      "kind": "modified",
+      "summary": "忽略存档测试夹具及其备份，避免提交玩家或临时测试数据。"
+    },
+    {
+      "path": "AGENTS.md",
+      "kind": "modified",
+      "summary": "区分工坊与经典约束，登记2K/工具演进/v3契约及范围。"
+    },
+    {
+      "path": "CHANGELOG.md",
+      "kind": "modified",
+      "summary": "记录工坊可玩切片与发布包边界。"
+    },
+    {
+      "path": "README.md",
+      "kind": "modified",
+      "summary": "更新默认玩法及多人接手入口，原GDD仍为长期规划。"
+    },
+    {
+      "path": "README_RUN.md",
+      "kind": "modified",
+      "summary": "说明新操作、2K启动、经典切换、两条存档及旧包不含新代码。"
+    },
+    {
+      "path": "THIRD_PARTY_NOTICES.md",
+      "kind": "modified",
+      "summary": "声明新增原创图形与合成音频来源。"
+    },
+    {
+      "path": "assets/audio/yard_drill.wav",
+      "kind": "added",
+      "summary": "新增原创合成工坊音效或循环音乐，无第三方录音。"
+    },
+    {
+      "path": "assets/audio/yard_drill.wav.import",
+      "kind": "added",
+      "summary": "保留Godot资源导入设置，跨机器重建缓存。"
+    },
+    {
+      "path": "assets/audio/yard_fist.wav",
+      "kind": "added",
+      "summary": "新增原创合成工坊音效或循环音乐，无第三方录音。"
+    },
+    {
+      "path": "assets/audio/yard_fist.wav.import",
+      "kind": "added",
+      "summary": "保留Godot资源导入设置，跨机器重建缓存。"
+    },
+    {
+      "path": "assets/audio/yard_hammer.wav",
+      "kind": "added",
+      "summary": "新增原创合成工坊音效或循环音乐，无第三方录音。"
+    },
+    {
+      "path": "assets/audio/yard_hammer.wav.import",
+      "kind": "added",
+      "summary": "保留Godot资源导入设置，跨机器重建缓存。"
+    },
+    {
+      "path": "assets/audio/yard_music.wav",
+      "kind": "added",
+      "summary": "新增原创合成工坊音效或循环音乐，无第三方录音。"
+    },
+    {
+      "path": "assets/audio/yard_music.wav.import",
+      "kind": "added",
+      "summary": "保留Godot资源导入设置，跨机器重建缓存。"
+    },
+    {
+      "path": "assets/audio/yard_portal.wav",
+      "kind": "added",
+      "summary": "新增原创合成工坊音效或循环音乐，无第三方录音。"
+    },
+    {
+      "path": "assets/audio/yard_portal.wav.import",
+      "kind": "added",
+      "summary": "保留Godot资源导入设置，跨机器重建缓存。"
+    },
+    {
+      "path": "assets/yard/auto.png",
+      "kind": "added",
+      "summary": "新增原创轻像素工坊、工具/模块或废品损伤帧，来自本地生成器。"
+    },
+    {
+      "path": "assets/yard/auto.png.import",
+      "kind": "added",
+      "summary": "保留Godot资源导入设置，跨机器重建缓存。"
+    },
+    {
+      "path": "assets/yard/bottle_0.png",
+      "kind": "added",
+      "summary": "新增原创轻像素工坊、工具/模块或废品损伤帧，来自本地生成器。"
+    },
+    {
+      "path": "assets/yard/bottle_0.png.import",
+      "kind": "added",
+      "summary": "保留Godot资源导入设置，跨机器重建缓存。"
+    },
+    {
+      "path": "assets/yard/bottle_1.png",
+      "kind": "added",
+      "summary": "新增原创轻像素工坊、工具/模块或废品损伤帧，来自本地生成器。"
+    },
+    {
+      "path": "assets/yard/bottle_1.png.import",
+      "kind": "added",
+      "summary": "保留Godot资源导入设置，跨机器重建缓存。"
+    },
+    {
+      "path": "assets/yard/bottle_2.png",
+      "kind": "added",
+      "summary": "新增原创轻像素工坊、工具/模块或废品损伤帧，来自本地生成器。"
+    },
+    {
+      "path": "assets/yard/bottle_2.png.import",
+      "kind": "added",
+      "summary": "保留Godot资源导入设置，跨机器重建缓存。"
+    },
+    {
+      "path": "assets/yard/bottle_3.png",
+      "kind": "added",
+      "summary": "新增原创轻像素工坊、工具/模块或废品损伤帧，来自本地生成器。"
+    },
+    {
+      "path": "assets/yard/bottle_3.png.import",
+      "kind": "added",
+      "summary": "保留Godot资源导入设置，跨机器重建缓存。"
+    },
+    {
+      "path": "assets/yard/bottle_4.png",
+      "kind": "added",
+      "summary": "新增原创轻像素工坊、工具/模块或废品损伤帧，来自本地生成器。"
+    },
+    {
+      "path": "assets/yard/bottle_4.png.import",
+      "kind": "added",
+      "summary": "保留Godot资源导入设置，跨机器重建缓存。"
+    },
+    {
+      "path": "assets/yard/computer_0.png",
+      "kind": "added",
+      "summary": "新增原创轻像素工坊、工具/模块或废品损伤帧，来自本地生成器。"
+    },
+    {
+      "path": "assets/yard/computer_0.png.import",
+      "kind": "added",
+      "summary": "保留Godot资源导入设置，跨机器重建缓存。"
+    },
+    {
+      "path": "assets/yard/computer_1.png",
+      "kind": "added",
+      "summary": "新增原创轻像素工坊、工具/模块或废品损伤帧，来自本地生成器。"
+    },
+    {
+      "path": "assets/yard/computer_1.png.import",
+      "kind": "added",
+      "summary": "保留Godot资源导入设置，跨机器重建缓存。"
+    },
+    {
+      "path": "assets/yard/computer_2.png",
+      "kind": "added",
+      "summary": "新增原创轻像素工坊、工具/模块或废品损伤帧，来自本地生成器。"
+    },
+    {
+      "path": "assets/yard/computer_2.png.import",
+      "kind": "added",
+      "summary": "保留Godot资源导入设置，跨机器重建缓存。"
+    },
+    {
+      "path": "assets/yard/computer_3.png",
+      "kind": "added",
+      "summary": "新增原创轻像素工坊、工具/模块或废品损伤帧，来自本地生成器。"
+    },
+    {
+      "path": "assets/yard/computer_3.png.import",
+      "kind": "added",
+      "summary": "保留Godot资源导入设置，跨机器重建缓存。"
+    },
+    {
+      "path": "assets/yard/computer_4.png",
+      "kind": "added",
+      "summary": "新增原创轻像素工坊、工具/模块或废品损伤帧，来自本地生成器。"
+    },
+    {
+      "path": "assets/yard/computer_4.png.import",
+      "kind": "added",
+      "summary": "保留Godot资源导入设置，跨机器重建缓存。"
+    },
+    {
+      "path": "assets/yard/drill.png",
+      "kind": "added",
+      "summary": "新增原创轻像素工坊、工具/模块或废品损伤帧，来自本地生成器。"
+    },
+    {
+      "path": "assets/yard/drill.png.import",
+      "kind": "added",
+      "summary": "保留Godot资源导入设置，跨机器重建缓存。"
+    },
+    {
+      "path": "assets/yard/fan_0.png",
+      "kind": "added",
+      "summary": "新增原创轻像素工坊、工具/模块或废品损伤帧，来自本地生成器。"
+    },
+    {
+      "path": "assets/yard/fan_0.png.import",
+      "kind": "added",
+      "summary": "保留Godot资源导入设置，跨机器重建缓存。"
+    },
+    {
+      "path": "assets/yard/fan_1.png",
+      "kind": "added",
+      "summary": "新增原创轻像素工坊、工具/模块或废品损伤帧，来自本地生成器。"
+    },
+    {
+      "path": "assets/yard/fan_1.png.import",
+      "kind": "added",
+      "summary": "保留Godot资源导入设置，跨机器重建缓存。"
+    },
+    {
+      "path": "assets/yard/fan_2.png",
+      "kind": "added",
+      "summary": "新增原创轻像素工坊、工具/模块或废品损伤帧，来自本地生成器。"
+    },
+    {
+      "path": "assets/yard/fan_2.png.import",
+      "kind": "added",
+      "summary": "保留Godot资源导入设置，跨机器重建缓存。"
+    },
+    {
+      "path": "assets/yard/fan_3.png",
+      "kind": "added",
+      "summary": "新增原创轻像素工坊、工具/模块或废品损伤帧，来自本地生成器。"
+    },
+    {
+      "path": "assets/yard/fan_3.png.import",
+      "kind": "added",
+      "summary": "保留Godot资源导入设置，跨机器重建缓存。"
+    },
+    {
+      "path": "assets/yard/fan_4.png",
+      "kind": "added",
+      "summary": "新增原创轻像素工坊、工具/模块或废品损伤帧，来自本地生成器。"
+    },
+    {
+      "path": "assets/yard/fan_4.png.import",
+      "kind": "added",
+      "summary": "保留Godot资源导入设置，跨机器重建缓存。"
+    },
+    {
+      "path": "assets/yard/fist.png",
+      "kind": "added",
+      "summary": "新增原创轻像素工坊、工具/模块或废品损伤帧，来自本地生成器。"
+    },
+    {
+      "path": "assets/yard/fist.png.import",
+      "kind": "added",
+      "summary": "保留Godot资源导入设置，跨机器重建缓存。"
+    },
+    {
+      "path": "assets/yard/hammer.png",
+      "kind": "added",
+      "summary": "新增原创轻像素工坊、工具/模块或废品损伤帧，来自本地生成器。"
+    },
+    {
+      "path": "assets/yard/hammer.png.import",
+      "kind": "added",
+      "summary": "保留Godot资源导入设置，跨机器重建缓存。"
+    },
+    {
+      "path": "assets/yard/keyboard_0.png",
+      "kind": "added",
+      "summary": "新增原创轻像素工坊、工具/模块或废品损伤帧，来自本地生成器。"
+    },
+    {
+      "path": "assets/yard/keyboard_0.png.import",
+      "kind": "added",
+      "summary": "保留Godot资源导入设置，跨机器重建缓存。"
+    },
+    {
+      "path": "assets/yard/keyboard_1.png",
+      "kind": "added",
+      "summary": "新增原创轻像素工坊、工具/模块或废品损伤帧，来自本地生成器。"
+    },
+    {
+      "path": "assets/yard/keyboard_1.png.import",
+      "kind": "added",
+      "summary": "保留Godot资源导入设置，跨机器重建缓存。"
+    },
+    {
+      "path": "assets/yard/keyboard_2.png",
+      "kind": "added",
+      "summary": "新增原创轻像素工坊、工具/模块或废品损伤帧，来自本地生成器。"
+    },
+    {
+      "path": "assets/yard/keyboard_2.png.import",
+      "kind": "added",
+      "summary": "保留Godot资源导入设置，跨机器重建缓存。"
+    },
+    {
+      "path": "assets/yard/keyboard_3.png",
+      "kind": "added",
+      "summary": "新增原创轻像素工坊、工具/模块或废品损伤帧，来自本地生成器。"
+    },
+    {
+      "path": "assets/yard/keyboard_3.png.import",
+      "kind": "added",
+      "summary": "保留Godot资源导入设置，跨机器重建缓存。"
+    },
+    {
+      "path": "assets/yard/keyboard_4.png",
+      "kind": "added",
+      "summary": "新增原创轻像素工坊、工具/模块或废品损伤帧，来自本地生成器。"
+    },
+    {
+      "path": "assets/yard/keyboard_4.png.import",
+      "kind": "added",
+      "summary": "保留Godot资源导入设置，跨机器重建缓存。"
+    },
+    {
+      "path": "assets/yard/magnet.png",
+      "kind": "added",
+      "summary": "新增原创轻像素工坊、工具/模块或废品损伤帧，来自本地生成器。"
+    },
+    {
+      "path": "assets/yard/magnet.png.import",
+      "kind": "added",
+      "summary": "保留Godot资源导入设置，跨机器重建缓存。"
+    },
+    {
+      "path": "assets/yard/paper_0.png",
+      "kind": "added",
+      "summary": "新增原创轻像素工坊、工具/模块或废品损伤帧，来自本地生成器。"
+    },
+    {
+      "path": "assets/yard/paper_0.png.import",
+      "kind": "added",
+      "summary": "保留Godot资源导入设置，跨机器重建缓存。"
+    },
+    {
+      "path": "assets/yard/paper_1.png",
+      "kind": "added",
+      "summary": "新增原创轻像素工坊、工具/模块或废品损伤帧，来自本地生成器。"
+    },
+    {
+      "path": "assets/yard/paper_1.png.import",
+      "kind": "added",
+      "summary": "保留Godot资源导入设置，跨机器重建缓存。"
+    },
+    {
+      "path": "assets/yard/paper_2.png",
+      "kind": "added",
+      "summary": "新增原创轻像素工坊、工具/模块或废品损伤帧，来自本地生成器。"
+    },
+    {
+      "path": "assets/yard/paper_2.png.import",
+      "kind": "added",
+      "summary": "保留Godot资源导入设置，跨机器重建缓存。"
+    },
+    {
+      "path": "assets/yard/paper_3.png",
+      "kind": "added",
+      "summary": "新增原创轻像素工坊、工具/模块或废品损伤帧，来自本地生成器。"
+    },
+    {
+      "path": "assets/yard/paper_3.png.import",
+      "kind": "added",
+      "summary": "保留Godot资源导入设置，跨机器重建缓存。"
+    },
+    {
+      "path": "assets/yard/paper_4.png",
+      "kind": "added",
+      "summary": "新增原创轻像素工坊、工具/模块或废品损伤帧，来自本地生成器。"
+    },
+    {
+      "path": "assets/yard/paper_4.png.import",
+      "kind": "added",
+      "summary": "保留Godot资源导入设置，跨机器重建缓存。"
+    },
+    {
+      "path": "assets/yard/portal.png",
+      "kind": "added",
+      "summary": "新增原创轻像素工坊、工具/模块或废品损伤帧，来自本地生成器。"
+    },
+    {
+      "path": "assets/yard/portal.png.import",
+      "kind": "added",
+      "summary": "保留Godot资源导入设置，跨机器重建缓存。"
+    },
+    {
+      "path": "assets/yard/scanner.png",
+      "kind": "added",
+      "summary": "新增原创轻像素工坊、工具/模块或废品损伤帧，来自本地生成器。"
+    },
+    {
+      "path": "assets/yard/scanner.png.import",
+      "kind": "added",
+      "summary": "保留Godot资源导入设置，跨机器重建缓存。"
+    },
+    {
+      "path": "assets/yard/washer_0.png",
+      "kind": "added",
+      "summary": "新增原创轻像素工坊、工具/模块或废品损伤帧，来自本地生成器。"
+    },
+    {
+      "path": "assets/yard/washer_0.png.import",
+      "kind": "added",
+      "summary": "保留Godot资源导入设置，跨机器重建缓存。"
+    },
+    {
+      "path": "assets/yard/washer_1.png",
+      "kind": "added",
+      "summary": "新增原创轻像素工坊、工具/模块或废品损伤帧，来自本地生成器。"
+    },
+    {
+      "path": "assets/yard/washer_1.png.import",
+      "kind": "added",
+      "summary": "保留Godot资源导入设置，跨机器重建缓存。"
+    },
+    {
+      "path": "assets/yard/washer_2.png",
+      "kind": "added",
+      "summary": "新增原创轻像素工坊、工具/模块或废品损伤帧，来自本地生成器。"
+    },
+    {
+      "path": "assets/yard/washer_2.png.import",
+      "kind": "added",
+      "summary": "保留Godot资源导入设置，跨机器重建缓存。"
+    },
+    {
+      "path": "assets/yard/washer_3.png",
+      "kind": "added",
+      "summary": "新增原创轻像素工坊、工具/模块或废品损伤帧，来自本地生成器。"
+    },
+    {
+      "path": "assets/yard/washer_3.png.import",
+      "kind": "added",
+      "summary": "保留Godot资源导入设置，跨机器重建缓存。"
+    },
+    {
+      "path": "assets/yard/washer_4.png",
+      "kind": "added",
+      "summary": "新增原创轻像素工坊、工具/模块或废品损伤帧，来自本地生成器。"
+    },
+    {
+      "path": "assets/yard/washer_4.png.import",
+      "kind": "added",
+      "summary": "保留Godot资源导入设置，跨机器重建缓存。"
+    },
+    {
+      "path": "assets/yard/workshop.png",
+      "kind": "added",
+      "summary": "新增原创轻像素工坊、工具/模块或废品损伤帧，来自本地生成器。"
+    },
+    {
+      "path": "assets/yard/workshop.png.import",
+      "kind": "added",
+      "summary": "保留Godot资源导入设置，跨机器重建缓存。"
+    },
+    {
+      "path": "data/yard_balance.json",
+      "kind": "added",
+      "summary": "工坊schema1数据源，九废品/四工具/升级/事件/章节与节奏。"
+    },
+    {
+      "path": "docs/DECISIONS_FULL_V0_1.md",
+      "kind": "modified",
+      "summary": "追加人类授权的路径A、QHD与切片范围。"
+    },
+    {
+      "path": "docs/PROJECT_STATE.md",
+      "kind": "modified",
+      "summary": "维护新实现、接口、真实验证、限制与具体下一步。"
+    },
+    {
+      "path": "docs/YARD_MIGRATION_V3.md",
+      "kind": "added",
+      "summary": "独立设计提交中的隔离配置/存档与恢复方案。"
+    },
+    {
+      "path": "docs/YARD_TEST_REPORT.md",
+      "kind": "added",
+      "summary": "记录477断言、成长模拟、2K渲染及未做的真人/Windows验证。"
+    },
+    {
+      "path": "project.godot",
+      "kind": "modified",
+      "summary": "默认进入新工坊，设计视口2560×1440；应用存档根名保持。"
+    },
+    {
+      "path": "scenes/yard.tscn",
+      "kind": "added",
+      "summary": "新默认工坊场景。"
+    },
+    {
+      "path": "scripts/can_field.gd",
+      "kind": "modified",
+      "summary": "共享场地增加可选尺寸与磁力归拢，保留堆积/伪物理兼容。"
+    },
+    {
+      "path": "scripts/main.gd",
+      "kind": "modified",
+      "summary": "经典保持1280画布，新增返回新工坊按钮。"
+    },
+    {
+      "path": "scripts/yard/yard_data.gd",
+      "kind": "added",
+      "summary": "读取并校验新配置目录、数值、材质、工具专属参数与前置。"
+    },
+    {
+      "path": "scripts/yard/yard_data.gd.uid",
+      "kind": "added",
+      "summary": "保留Godot脚本稳定资源UID，供不同机器解析引用。"
+    },
+    {
+      "path": "scripts/yard/yard_economy.gd",
+      "kind": "added",
+      "summary": "纯函数计算材质/弱点/连钻伤害、冷却及收益。"
+    },
+    {
+      "path": "scripts/yard/yard_economy.gd.uid",
+      "kind": "added",
+      "summary": "保留Godot脚本稳定资源UID，供不同机器解析引用。"
+    },
+    {
+      "path": "scripts/yard/yard_main.gd",
+      "kind": "added",
+      "summary": "精简三页UI、输入、音频、模态剧情/设置、保存与经典切换。"
+    },
+    {
+      "path": "scripts/yard/yard_main.gd.uid",
+      "kind": "added",
+      "summary": "保留Godot脚本稳定资源UID，供不同机器解析引用。"
+    },
+    {
+      "path": "scripts/yard/yard_save.gd",
+      "kind": "added",
+      "summary": "v3原子保存、首次v1/v2导入与真实坏档备份结果。"
+    },
+    {
+      "path": "scripts/yard/yard_save.gd.uid",
+      "kind": "added",
+      "summary": "保留Godot脚本稳定资源UID，供不同机器解析引用。"
+    },
+    {
+      "path": "scripts/yard/yard_state.gd",
+      "kind": "added",
+      "summary": "工具、事件、技能、目标与v3状态，复用持久场地并兼容导入。"
+    },
+    {
+      "path": "scripts/yard/yard_state.gd.uid",
+      "kind": "added",
+      "summary": "保留Godot脚本稳定资源UID，供不同机器解析引用。"
+    },
+    {
+      "path": "scripts/yard/yard_view.gd",
+      "kind": "added",
+      "summary": "原生2K统一绘制、工具热点、门户和受限VFX。"
+    },
+    {
+      "path": "scripts/yard/yard_view.gd.uid",
+      "kind": "added",
+      "summary": "保留Godot脚本稳定资源UID，供不同机器解析引用。"
+    },
+    {
+      "path": "tests/capture_yard.gd",
+      "kind": "added",
+      "summary": "实际渲染7张原生2K画面，使用隔离开发夹具。"
+    },
+    {
+      "path": "tests/capture_yard.gd.uid",
+      "kind": "added",
+      "summary": "保留Godot脚本稳定资源UID，供不同机器解析引用。"
+    },
+    {
+      "path": "tests/screenshots/yard-01-start-2k.png",
+      "kind": "added",
+      "summary": "真实Godot渲染的2560×1440开发验收图，非真人成长记录。"
+    },
+    {
+      "path": "tests/screenshots/yard-01-start-2k.png.import",
+      "kind": "added",
+      "summary": "保留Godot资源导入设置，跨机器重建缓存。"
+    },
+    {
+      "path": "tests/screenshots/yard-02-workshop-2k.png",
+      "kind": "added",
+      "summary": "真实Godot渲染的2560×1440开发验收图，非真人成长记录。"
+    },
+    {
+      "path": "tests/screenshots/yard-02-workshop-2k.png.import",
+      "kind": "added",
+      "summary": "保留Godot资源导入设置，跨机器重建缓存。"
+    },
+    {
+      "path": "tests/screenshots/yard-03-portal-2k.png",
+      "kind": "added",
+      "summary": "真实Godot渲染的2560×1440开发验收图，非真人成长记录。"
+    },
+    {
+      "path": "tests/screenshots/yard-03-portal-2k.png.import",
+      "kind": "added",
+      "summary": "保留Godot资源导入设置，跨机器重建缓存。"
+    },
+    {
+      "path": "tests/screenshots/yard-04-drill-2k.png",
+      "kind": "added",
+      "summary": "真实Godot渲染的2560×1440开发验收图，非真人成长记录。"
+    },
+    {
+      "path": "tests/screenshots/yard-04-drill-2k.png.import",
+      "kind": "added",
+      "summary": "保留Godot资源导入设置，跨机器重建缓存。"
+    },
+    {
+      "path": "tests/screenshots/yard-05-codex-2k.png",
+      "kind": "added",
+      "summary": "真实Godot渲染的2560×1440开发验收图，非真人成长记录。"
+    },
+    {
+      "path": "tests/screenshots/yard-05-codex-2k.png.import",
+      "kind": "added",
+      "summary": "保留Godot资源导入设置，跨机器重建缓存。"
+    },
+    {
+      "path": "tests/screenshots/yard-06-prosthesis-2k.png",
+      "kind": "added",
+      "summary": "真实Godot渲染的2560×1440开发验收图，非真人成长记录。"
+    },
+    {
+      "path": "tests/screenshots/yard-06-prosthesis-2k.png.import",
+      "kind": "added",
+      "summary": "保留Godot资源导入设置，跨机器重建缓存。"
+    },
+    {
+      "path": "tests/screenshots/yard-07-chapter-2k.png",
+      "kind": "added",
+      "summary": "真实Godot渲染的2560×1440开发验收图，非真人成长记录。"
+    },
+    {
+      "path": "tests/screenshots/yard-07-chapter-2k.png.import",
+      "kind": "added",
+      "summary": "保留Godot资源导入设置，跨机器重建缓存。"
+    },
+    {
+      "path": "tests/test_yard.gd",
+      "kind": "added",
+      "summary": "97项数据/状态/经济/存档文件和迁移检查。"
+    },
+    {
+      "path": "tests/test_yard.gd.uid",
+      "kind": "added",
+      "summary": "保留Godot脚本稳定资源UID，供不同机器解析引用。"
+    },
+    {
+      "path": "tests/test_yard_input.gd",
+      "kind": "added",
+      "summary": "6项2K引擎事件路由/命中/购买不穿透检查。"
+    },
+    {
+      "path": "tests/test_yard_input.gd.uid",
+      "kind": "added",
+      "summary": "保留Godot脚本稳定资源UID，供不同机器解析引用。"
+    },
+    {
+      "path": "tests/test_yard_progression.gd",
+      "kind": "added",
+      "summary": "无赠币的三种操作占比策略模拟，明确不是真人时长。"
+    },
+    {
+      "path": "tests/test_yard_progression.gd.uid",
+      "kind": "added",
+      "summary": "保留Godot脚本稳定资源UID，供不同机器解析引用。"
+    },
+    {
+      "path": "tests/test_yard_scene.gd",
+      "kind": "added",
+      "summary": "21项真实场景、暂停/重置、VFX和节点增长检查。"
+    },
+    {
+      "path": "tests/test_yard_scene.gd.uid",
+      "kind": "added",
+      "summary": "保留Godot脚本稳定资源UID，供不同机器解析引用。"
+    },
+    {
+      "path": "tools/build_yard_art.py",
+      "kind": "added",
+      "summary": "确定性原创工坊、六类五阶段垃圾、工具、图标和合成音频生成器。"
+    },
+    {
+      "path": "tools/dev.py",
+      "kind": "modified",
+      "summary": "跨平台全检入口纳入新状态、场景、输入和成长检查。"
+    }
+  ],
+  "decisions": [
+    "遵从人类最新授权，采用GDD技术路径A；仅实现首段工坊，保留完整规划原文。",
+    "轻微像素、工业蓝绿与暖金，UI以空间/图标/价格和目标表达，详细信息悬停或主动打开。",
+    "旧经典数值JSON不改；新工具/门/自动线价格基于无赠币策略模拟初调，等待真人试玩。",
+    "同一逻辑场地复用1280坐标，原生QHD UI与鼠标映射×2；轻/大垃圾大小也作用于命中。",
+    "共享冷却、防重入结算、永久堆积和独立自动线保留；锤最多震荡3邻居，钻中断后重置连钻。"
+  ],
+  "contracts": [
+    {
+      "area": "entry / viewport",
+      "summary": "默认scenes/yard.tscn，2560×1440；经典scene独立1280×720并可双向切换，应用config/name保持。",
+      "breaking_change": false
+    },
+    {
+      "area": "configuration",
+      "summary": "新增yard_balance.json schema1；旧demo_balance.json完全保留。所有新价格/伤害/间隔/门槛来自新JSON。",
+      "breaking_change": false
+    },
+    {
+      "area": "state / field",
+      "summary": "新增YardState.attack(serial,point)与四参hit；不替换旧两参信号。共享场地spawn增加默认1的可选shape_scale及gather，存档省略默认尺寸。",
+      "breaking_change": false
+    },
+    {
+      "area": "save",
+      "summary": "新yard_save_v3.json版本3，缺失才导入v1/v2旧文件，原文件不写；两模式后续不合并。坏档备份并提示，无离线补发。详见迁移设计。",
+      "breaking_change": false
+    }
+  ],
+  "tests": [
+    {
+      "command": "python3 tools/dev.py test",
+      "working_directory": ".",
+      "result": "passed",
+      "summary": "末次全检：Godot导入/解析；旧69+216+68、新97+21+6共477断言0失败；旧成长与新30/50/75%策略全部通过；16协议+5经典平衡Python通过，无引擎错误/泄漏。"
+    },
+    {
+      "command": "/Applications/Godot.app/Contents/MacOS/Godot --path . --script tests/capture_yard.gd -- --test-mode",
+      "working_directory": ".",
+      "result": "passed",
+      "summary": "Compatibility真实渲染7张2560×1440图；检查初始/工具/门户/钻事件/图鉴/安装/结束，夹具不代表真人进度。"
+    },
+    {
+      "command": "python3 tools/handoff.py validate",
+      "working_directory": ".",
+      "result": "passed",
+      "summary": "交接schema、追加式历史与相对origin/main全部路径覆盖通过。"
+    },
+    {
+      "command": "git diff --check",
+      "working_directory": ".",
+      "result": "passed",
+      "summary": "本轮补丁无空白错误。"
+    },
+    {
+      "command": "Windows new-yard export and hardware playtest",
+      "working_directory": ".",
+      "result": "not_run",
+      "summary": "本轮无打包请求，未导出或Windows实机运行。旧Windows v1.1 ZIP不含新工坊。"
+    },
+    {
+      "command": "20–30 minute human first-time playtest",
+      "working_directory": ".",
+      "result": "not_run",
+      "summary": "完成的是确定性策略模拟（7.52–11.25模拟分钟），不能据此证明真人体验目标。"
+    }
+  ],
+  "risks": [
+    "完整五章、工业/异界、终极义肢与3–5小时仍为规划。",
+    "未做Windows新版本导出或实机输入/音频/中文排版验证；无专用game-dev遥测。",
+    "长时堆积成本会增加；模拟状态/VFX检查不等于GPU性能测试。",
+    "两模式仅首次迁移，之后钱包/升级各自独立，不能期待来回合并收益。"
+  ],
+  "next_steps": [
+    {
+      "priority": "P1",
+      "task": "开展新玩家20–30分钟试玩，记录义手/锤/钻/深度II/目标时间、积压和乐趣后调JSON。",
+      "acceptance": "保留真人记录，明确与策略模拟区分；调参后重跑新旧成长。"
+    },
+    {
+      "priority": "P1",
+      "task": "有发布需求时重新导出Windows新工坊并实机验收。",
+      "acceptance": "新资源探针、干净启动/v2导入/v3续玩、缩放命中、字体和音频通过。"
+    },
+    {
+      "priority": "P2",
+      "task": "按完整GDD扩展工业区域与下一章节，先确认内容和新深度/章节迁移契约。",
+      "acceptance": "数据源、原创资源、场景/存档测试和新交接齐全，旧经典回归保持。"
+    }
+  ],
+  "recovery": {
+    "strategy": "git_revert",
+    "notes": "可回退本功能提交或进入经典Demo继续旧存档；不要删除save_v1.json或yard_save_v3.json。回退代码不反向合并新模式进度，坏档保留备份；迁移设计4a3c0cb可独立审阅。"
+  }
+}

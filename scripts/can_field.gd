@@ -23,16 +23,19 @@ var next_id := 1
 var feed_progress := 0.0
 var accumulator := 0.0
 var rng := RandomNumberGenerator.new()
+var max_shape_scale := 1.0
 
 func _init() -> void:
 	rng.randomize()
 
-func spawn(kind: String, max_hp: int) -> Dictionary:
+func spawn(kind: String, max_hp: int, shape_scale: float = 1.0) -> Dictionary:
 	var destination := Vector2(rng.randf_range(FLOOR.position.x+35,FLOOR.end.x-35),rng.randf_range(FLOOR.position.y+25,FLOOR.end.y-20))
 	var item := {"id":next_id,"kind":kind,"hp":max_hp,"max_hp":max_hp,"claimed":false,
 		"pos":BELT_START,"velocity":(destination-DROP_POINT)*1.32,"height":0.0,"vertical_speed":35.0,
 		"rotation":0.0,"spin":rng.randf_range(-8,8),"phase":"belt","age":0.0,"impact":0.0,"cleanup":0.0}
 	next_id += 1
+	if not is_equal_approx(shape_scale,1.0): item.shape_scale = shape_scale
+	max_shape_scale = maxf(max_shape_scale,shape_scale)
 	items.append(item)
 	active.append(item)
 	by_id[item.id] = item
@@ -141,18 +144,20 @@ func _bounds(item: Dictionary) -> void:
 func _contact(item: Dictionary) -> void:
 	var key := _cell(item.pos)
 	var contacts := 0
-	for dx in range(-1,2):
-		for dy in range(-1,2):
+	var reach := ceili(RADIUS*(float(item.get("shape_scale",1.0))+max_shape_scale)/CELL)
+	for dx in range(-reach,reach+1):
+		for dy in range(-reach,reach+1):
 			for other in grid.get(key+Vector2i(dx,dy),[]):
 				if other.id == item.id or other.claimed or other.height > 10:
 					continue
 				var offset: Vector2 = item.pos-other.pos
 				var distance := offset.length()
-				if distance >= RADIUS*2:
+				var contact_radius := RADIUS*(float(item.get("shape_scale",1.0))+float(other.get("shape_scale",1.0)))
+				if distance >= contact_radius:
 					continue
 				# Soft, local contacts deflect the newcomer; the settled pile sleeps.
 				var normal := offset/distance if distance > .01 else Vector2.from_angle(float(item.id)*2.4)
-				item.pos += normal*minf(5,(RADIUS*2-distance)*.4)
+				item.pos += normal*minf(5,(contact_radius-distance)*.4)
 				var approach: float = item.velocity.dot(normal)
 				if approach < 0:
 					item.velocity -= normal*approach*1.4
@@ -181,7 +186,7 @@ func at_point(point: Vector2) -> Dictionary:
 	var best_depth := -INF
 	for item in items:
 		if item.claimed or item.phase == "belt": continue
-		var offset := (point-visual_position(item)).rotated(-item.rotation)/Vector2(26,37)
+		var offset := (point-visual_position(item)).rotated(-item.rotation)/(Vector2(26,37)*float(item.get("shape_scale",1.0)))
 		if offset.length_squared() <= 1.0 and item.pos.y >= best_depth:
 			best = item
 			best_depth = item.pos.y
@@ -196,6 +201,18 @@ func pending_count() -> int:
 	var count := 0
 	for item in items:
 		if not item.claimed: count += 1
+	return count
+
+func gather(point: Vector2, radius: float, speed: float) -> int:
+	var count := 0
+	for item in items:
+		if item.claimed or item.phase == "belt" or item.pos.distance_to(point)>radius: continue
+		var direction: Vector2 = point-item.pos
+		if direction.length_squared()<900: continue
+		item.velocity = direction.normalized()*speed
+		item.phase = "moving"
+		if not active.has(item): active.append(item)
+		count += 1
 	return count
 
 func snapshot() -> Dictionary:
@@ -233,6 +250,7 @@ func restore(data: Dictionary, can_defs: Dictionary) -> bool:
 		if int(raw.max_hp) != int(can_defs[raw.kind].hp) or int(raw.hp) < 0 or int(raw.hp) > int(raw.max_hp): return false
 		if not raw.get("claimed") is bool or raw.claimed != (int(raw.hp) == 0) or raw.claimed != (raw.phase == "crushed"): return false
 		if float(raw.height) < 0 or float(raw.height) > 200 or absf(float(raw.vertical_speed)) > 1000 or float(raw.age) < 0: return false
+		if raw.has("shape_scale") and (not finite_number(raw.shape_scale) or float(raw.shape_scale)<.5 or float(raw.shape_scale)>2): return false
 		var pos := Vector2(float(raw.pos[0]),float(raw.pos[1]))
 		if raw.phase == "belt":
 			if not Rect2(330,220,275,50).has_point(pos) or float(raw.age) > BELT_TRAVEL+STEP: return false
@@ -252,7 +270,9 @@ func restore(data: Dictionary, can_defs: Dictionary) -> bool:
 	active.clear()
 	by_id.clear()
 	grid.clear()
+	max_shape_scale = 1.0
 	for item in items:
+		max_shape_scale = maxf(max_shape_scale,float(item.get("shape_scale",1.0)))
 		by_id[item.id] = item
 		if item.phase != "rest" or float(item.impact) > 0: active.append(item)
 		if item.phase not in ["belt","crushed"]: _index(item)

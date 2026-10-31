@@ -2,6 +2,7 @@
 build/
 __pycache__/
 tests/.test_save.json*
+tests/.yard_test_save.json*
 .DS_Store
 *.pyc
 .venv/
